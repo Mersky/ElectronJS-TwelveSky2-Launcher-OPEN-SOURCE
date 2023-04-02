@@ -1,0 +1,169 @@
+@import url('./normalize.css');
+
+.container {
+    display: flex;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 714px;
+    height: 591px;
+    position: relative;
+}
+
+.banner {
+    width: 200px;
+    position: absolute;
+    bottom: 12px;
+    left: 30px;
+}
+
+.banner img {
+    width: 160px;
+    margin-bottom: 18px;
+}
+
+.banner .copyright {
+    font-size: 10px;
+    color: #fff;
+}
+
+.title {
+    position: absolute;
+    top: 137px;
+    right: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 444px;
+    height: 20px;
+}
+
+.title h6 {
+    color: #b5b5b5;
+    font-size: 14px;
+    letter-spacing: .5px;
+}
+
+.title .logos {
+    display: flex;
+}
+
+.title .logos li img {
+    width: 50px;
+    margin-left: 8px;
+}
+
+.htmlIframe {
+    width: 453px;
+    height: 305px;
+    position: absolute;
+    right: 37.5px;
+    top: 165px;
+}
+
+.htmlIframe iframe {
+    border: none;
+    border-radius: 6px;
+}
+
+.progressTitle {
+    position: absolute;
+    left: 234px;
+    bottom: 54px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.progressTitle .version {
+    margin-bottom: 12px;
+}
+
+.progress {
+    position: absolute;
+    right: 46px;
+    top: 487px;
+    width: 375px;
+}
+
+.progress .mainProgress,
+.progress .secondProgress {
+    position: relative;
+    height: 19px;
+}
+
+.progress .mainProgress {
+    margin-bottom: 6px;
+}
+
+.progress .mainProgress progress {
+    position: absolute;
+    top: 15px;
+}
+
+.progress .secondProgress progress {
+    position: absolute;
+    top: 15px;
+}
+
+.progress p {
+    font-size: 11px;
+    color: #fff;
+}
+
+.progress progress {
+    padding: 0!important;
+    margin: 0!important;
+    height: 7px;
+    width: 100%;
+    background: #000;
+    border: none;
+    -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+}
+
+.progress .mainProgress progress::-webkit-progress-value {
+    background: linear-gradient(180deg, rgba(15,71,128,1) 0%, rgba(32,164,255,1) 50%, rgba(15,56,97,1) 100%);
+}
+
+.progress .secondProgress progress::-webkit-progress-value {
+    background: linear-gradient(180deg, rgba(125,20,17,1) 0%, rgba(255,40,51,1) 50%, rgba(94,19,16,1) 100%);
+}
+
+.progress progress::-webkit-progress-bar {
+    background: #000;
+}
+
+.buttons {
+    display: flex;
+    gap: 28.6px;
+    position: absolute;
+    bottom: 7px;
+    right: 29px;
+}
+
+.buttons .btn {
+    background-image: url('../img/button.png');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96px;
+    height: 31px;
+    font-size: 12px;
+    cursor: pointer;
+    color: #8c96a1;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.buttons .btn:hover {
+    background-image: url('../img/buttonHover.png');
+    color: #00ffff;
+}
+
+.buttons .btn:disabled {
+    background-image: url('../img/buttonDisable.png');
+    color: #585e65;
+    cursor: default;
+}

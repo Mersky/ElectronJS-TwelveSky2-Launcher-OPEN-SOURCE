@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        :focus {
+            outline: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+        }
+
+        .options {
+            padding: 10px;
+        }
+
+        .options .title {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .options .mode {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .options .form-check {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+
+        .options label {
+            white-space: nowrap;
+        }
+
+        .options .mode .form-check input {
+            margin-right: 5px;
+        }
+
+        .options .form-check select {
+            width: 100%;
+            margin-left: 5px;
+        }
+
+        .options .form-check button {
+            padding: 4px 7px;
+        }
+    </style>
+</head>
+<body>
+    <div class="options">
+        <h6 class="title" id="resolutionSettings"></h6>
+        <div class="mode">
+            <div class="form-check">
+                <input type="radio" name="screen" id="window" value="2">
+                <label for="window" id="windowMode"></label>
+            </div>
+            <div class="form-check">
+                <input type="radio" name="screen" id="fullscreen" value="1">
+                <label for="fullscreen" id="fullscreenMode"></label>
+            </div>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label" for="resolution" id="resolutionTitle"></label>
+            <select name="resolution" id="resolution">
+            </select>
+        </div>
+        <h6 class="title" id="gameSettings"></h6>
+        <div class="form-check">
+            <label class="form-check-label" for="language" id="languageTitle"></label>
+            <select name="language" id="language">
+            </select>
+        </div>
+        <div class="form-check">
+            <button id="saveOption" onclick="saveIni()" type="submit"></button>
+        </div>
+    </div>
+
+    <script>
+
+        const resolutionSettings = document.querySelector('#resolutionSettings');
+        const windowMode = document.querySelector('#windowMode');
+        const fullscreenMode = document.querySelector('#fullscreenMode');
+        const resolutionTitle = document.querySelector('#resolutionTitle');
+        const gameSettings = document.querySelector('#gameSettings');
+        const languageTitle = document.querySelector('#languageTitle');
+        const saveButton = document.querySelector('#saveOption');
+
+        function translate(key){
+            return electron.invoke('translate', key);
+        }
+
+        translate('resolutionSettings').then((result) => {
+            resolutionSettings.innerHTML = result;
+        });
+
+        translate('windowMode').then((result) => {
+            windowMode.innerHTML = result;
+        });
+
+        translate('fullscreenMode').then((result) => {
+            fullscreenMode.innerHTML = result;
+        });
+
+        translate('resolutionTitle').then((result) => {
+            resolutionTitle.innerHTML = result;
+        });
+
+        translate('gameSettings').then((result) => {
+            gameSettings.innerHTML = result;
+        });
+
+        translate('languageTitle').then((result) => {
+            languageTitle.innerHTML = result;
+        });
+
+        translate('saveButton').then((result) => {
+            saveButton.innerHTML = result;
+        });
+        
+        const resolutionSelect = document.querySelector('#resolution');
+        const languageSelect = document.querySelector('#language');
+        const fullscreenRadio = document.querySelector('#fullscreen');
+        const windowRadio = document.querySelector('#window');
+
+        const getResolutions = ts2.getResolutions;
+        const getLanguages = ts2.getLanguages;
+
+        if (typeof getLanguages === "object"){
+            console.log('asdas')
+        }
+            
+        ts2.createOption(resolutionSelect, getResolutions, ts2.getActive('resolution'));
+        ts2.createOption(languageSelect, getLanguages, ts2.getActive('language'));
+
+        if (ts2.getActive('fullscreen') == fullscreenRadio.value) {
+            fullscreenRadio.checked = true;
+        }else {
+            windowRadio.checked = true;
+        }
+
+        function saveIni() {
+            
+            const resolutionArr = resolutionSelect.value.split('x');
+            const screens = document.querySelectorAll('input[name="screen"]');
+            const screenType = Array.from(screens).find(radio => radio.checked);
+            ts2.createOptionFile(screenType.value, resolutionArr[0], resolutionArr[1], languageSelect.value);
+            electron.send('saveOption');
+
+        }
+
+    </script>
+
+</body>
+</html>

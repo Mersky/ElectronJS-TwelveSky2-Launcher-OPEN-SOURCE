@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Src/css/stylesheet.css">
+</head>
+<body id="app-body">
+    <div class="container" style="background-image: url('./Src/img/1.png');">
+        <div class="banner">
+            <img src="./Src/img/12sky_logo.png" alt="12sky2">
+            <p class="copyright"></p>
+        </div>
+
+        <div class="title">
+            <h6 class="notice"></h6>
+            <ul class="logos">
+                <li><img src="./Src/img/aeria.png" alt="aeria"></li>
+            </ul>
+        </div>
+
+        <div class="htmlIframe">
+            <iframe id="iframe" width="100%" height="100%"></iframe>
+        </div>
+
+        <div class="progressTitle">
+            <p class="version"></p>
+            <p class="process"></p>
+        </div>
+        
+        <div class="progress">
+            <div class="mainProgress">
+                <p id="versionInfo"></p>
+                <progress id="versionProgress" max="100" value="0"></progress>
+            </div>
+            <div class="secondProgress">
+                <p id="processInfo"></p>
+                <progress id="processProgress" max="100" value="0"></progress>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button id="homeButton" class="btn"></button>
+            <button id="optionButton" class="btn"></button>
+            <button id="startButton" class="btn" disabled></button>
+            <button id="exitButton" class="btn"></button>
+        </div>
+        
+    </div>
+    <script src="./Src/js/javascript.js"></script>
+</body>
+</html>
